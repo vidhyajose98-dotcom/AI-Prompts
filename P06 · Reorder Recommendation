@@ -1,0 +1,72 @@
+**P06 · Reorder Recommendation**
+
+Section: 02 - Operations | Workflow step: Step 6 of 10
+
+Current version: v1.2 | Status: Complete | Last updated: 24 March 2026
+
+📌 **Prompt Text** (v1.2)
+
+"Role: You are a Senior Procurement Planner for a retail café chain.
+
+Task: Recommend exact reorder quantities for the products listed in \[CURRENT_STOCK\], ensuring alignment with the predicted demand in \[FORECAST_DEMAND\].
+
+Instructions:
+
+- Calculate the 'Suggested Order' by considering: (Forecast Demand + \[SAFETY_STOCK_LEVEL\]) - Current Stock.
+- Round the suggested order to the nearest whole supplier unit (e.g., if milk comes in crates of 10, round up).
+- Provide a 'Justification' for each quantity (e.g., 'To cover 30% increase in weekend trade').
+- Assign a 'Priority Level' (Essential, Non-Essential, or Bulk-Buy Opportunity).
+
+Constraints: > - Do not recommend ordering if current stock exceeds forecast plus safety buffer.
+
+- Tone: Professional, logistical, and efficient.
+
+Output format: Structured Table with columns: Product | Order Quantity | Justification | Priority Level."
+
+Placeholders to fill:
+
+| Placeholder            | Source                        | Example         | Format  |
+| ---------------------- | ----------------------------- | --------------- | ------- |
+| \[CURRENT_STOCK\]      | Inventory System / P04 Output | Units available | Table   |
+| \[FORECAST_DEMAND\]    | P03 output                    | Expected demand | Table   |
+| \[SAFETY_STOCK_LEVEL\] | Business policy               | 20 units        | Integer |
+
+🏢 Intended Workflow or Task
+
+- Trigger: Identification of stock risks in P04 or a weekly ordering cycle.
+- Actor: Procurement Officer / Store Manager.
+- Next step: Approved quantities are passed to P07 (Supplier Email Generator).
+
+❗ Problem Being Solved Manual ordering currently leads to inconsistent decisions. Over-ordering perishables costs the café \$150/week in waste, while under-ordering results in stock-outs and lost revenue.
+
+⚡ Automation Potential: High (~80%) - AI handles the mathematical logic, while the human reviews for supplier-specific constraints.
+
+⚠️ Risks and Limitations
+
+- Risk: AI may suggest an order quantity that the supplier cannot fulfill (e.g., out of stock). (Level: Medium)
+- Mitigation: Include a final step for the Actor to verify availability with the vendor.
+
+🔄 Version History
+
+- v1.0 - Initial draft
+  - Prompt: "Suggest what I should order based on my stock levels."
+  - Output: Generic suggestions (e.g., "Order more milk") without specific numbers.
+  - Observed effect: Not useful for actual purchasing; manager still had to do the math manually.
+  - Lesson learned: I must include a specific Formula and Rounding instructions in the prompt.
+- v1.2 - Logistical Upgrade
+  - Change: Added the "Procurement Planner" role and the specific math formula including safety stock.
+  - Output: Precise order quantities with logical justifications for each.
+  - Observed effect: Decision-making speed increased; orders are now data-driven rather than "gut feeling."
+  - Lesson learned: Adding a "Justification" column helps the manager trust the AI's math.
+
+**📊 A/B Test Results**
+
+| Criteria               | v1.0 score | v1.2 score |
+| ---------------------- | ---------- | ---------- |
+| Mathematical Precision | 2/5        | 5/5        |
+| Operational Logic      | 2/5        | 5/5        |
+| Overall                | 2/5        | 4.8/5      |
+
+🔗 Related
+
+Prev: P05 | Next: P07
