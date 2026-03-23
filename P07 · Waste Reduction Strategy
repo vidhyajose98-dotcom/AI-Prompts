@@ -1,0 +1,73 @@
+**P07 · Waste Reduction Strategy**
+
+**Section:** 02 - Operations | **Workflow step:** Step 7 of 10
+
+**Current version:** v1.2 | **Status:** Complete | **Last updated:** 24 March 2026
+
+**📌 Prompt Text (v1.2)**
+
+**"Role:** You are a Retail marketing strategist.
+
+**Task:** Develop a targeted waste reduction strategy for the slow-moving or expiring products identified in **\[SLOW_MOVING_PRODUCTS\]**.
+
+**Instructions:**
+
+- Categorize products by **\[PRODUCT_TYPE\]** (Perishable vs. Non-Perishable).
+- For items expiring within 24 hours, suggest a 'Flash Sale' pricing model using **\[CURRENT_PRICING\]**.
+- For slow-moving non-perishables, suggest a 'Product Bundle' (e.g., 'Coffee + Muffin deal').
+- Estimate the 'Expected Recovery Value' (how much revenue is saved vs. throwing it away).
+
+**Constraints:**
+
+- Ensure suggested discounts do not exceed 50% of the cost price.
+- Tone: Creative yet financially conservative.
+
+**Output format:** Structured sections: 1. Immediate Actions (Expiring), 2. Strategic Bundles (Slow-moving), 3. Estimated Financial Impact."
+
+**Placeholders:**
+
+| **Placeholder**              | **Source**          | **Example**          | **Format**  |
+| ---------------------------- | ------------------- | -------------------- | ----------- |
+| **\[SLOW_MOVING_PRODUCTS\]** | Output from P02/P05 | Almond Milk, Spinach | List        |
+| **\[PRODUCT_TYPE\]**         | Product Catalog     | Perishable           | Text        |
+| **\[CURRENT_PRICING\]**      | POS System          | \$4.50 per unit      | Table/Price |
+
+**🏢 Intended Workflow or Task**
+
+- **Trigger:** Identification of overstock or expiring goods in P05.
+- **Actor:** Marketing Manager / Store Lead.
+- **Next step:** Approved promotions are updated in the POS system and posted on local social media.
+
+**❗ Problem Being Solved** Expired inventory is a 100% financial loss. Currently, the café loses approximately **\$80/week** in thrown-away pastries and dairy because there is no system to discount them before they expire.
+
+**⚡ Automation Potential:** Medium (~60%) - AI generates the creative deals, but the Manager must ensure the kitchen can support the bundles.
+
+**⚠️ Risks and Limitations**
+
+- **Risk:** Frequent discounts might train customers to wait for sales, lowering full-price revenue. (Level: Medium)
+- **Mitigation:** Limit "Flash Sales" to the final 2 hours of trade only.
+
+**🔄 Version History**
+
+- **v1.0 - Initial draft**
+  - **Prompt:** "Give me some ideas to sell my old stock."
+  - **Output:** Generic ideas like "Have a sale" or "Give it away for free."
+  - **Observed effect:** Not professional; "free" doesn't help the business recover costs.
+  - **Lesson learned:** I need to include **Pricing Constraints** and focus on **Recovery Value**.
+- **v1.2 - Marketing Strategist Upgrade**
+  - **Change:** Added the "Revenue Management" role and specific bundling logic for different product types.
+  - **Output:** Actionable marketing campaigns with specific price points and impact estimates.
+  - **Observed effect:** Transformed "waste" into a promotional opportunity that increases afternoon foot traffic.
+  - **Lesson learned:** AI is better at "creative" business tasks when given specific financial boundaries.
+
+**📊 A/B Test Results**
+
+| **Criteria**         | **v1.0 score** | **v1.2 score** |
+| -------------------- | -------------- | -------------- |
+| Strategic Creativity | 2/5            | 5/5            |
+| Financial Realism    | 1/5            | 4.5/5          |
+| Overall              | 1.5/5          | 4.8/5          |
+
+**🔗 Related**
+
+Prev: P06 | Next: P08
