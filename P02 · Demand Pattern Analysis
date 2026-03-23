@@ -1,0 +1,111 @@
+**P02 · Demand Pattern Analysis**
+
+**Section:** 02 - Operations (Inventory Optimization) | **Workflow step:** Step 2 of 10
+
+**Current version:** v1.2 | **Status:** ✅ Complete | **Last updated:** 20 March 2026
+
+📌 Prompt Text
+
+"I'm a retail business analyst at a cafe.  
+<br/>Task:  
+Analyse the cleaned sales dataset to identify demand patterns.  
+<br/>Input:  
+\[Cleaned dataset from P01\]  
+<br/>Instructions:  
+\- Identify top-selling and slow-moving products  
+\- Analyse daily and weekly trends  
+\- Detect any unusual spikes or drops  
+\- Categorise products: Fast / Moderate / Slow
+
+\- Create a bar chart showing the Total Units Sold per Product. The x-axis should list only Product Names (no dates), and each bar should be labelled with the total unit count  
+<br/>Constraints:  
+\- Use only provided data  
+\- Do not assume external factors  
+<br/>Output:  
+1\. Key insights summary  
+2\. Product classification table  
+3\. Demand trends explanation"
+
+**Placeholders**
+
+| Placeholder         | Source          | Example               | Format           |
+| ------------------- | --------------- | --------------------- | ---------------- |
+| \[CLEANED_DATASET\] | Output from P01 | Cleaned sales CSV     | Structured table |
+| \[TIME_RANGE\]      | Analyst input   | Last 30 days          | Text             |
+| \[PRODUCT_LIST\]    | POS master data | Coffee, Latte, Muffin | List             |
+
+🏢 **Intended Workflow or Task**
+
+- Trigger: Clean dataset available
+- Actor: Operations manager
+- Next step: Feeds into P03 (Forecasting)
+
+P01 → \[P02 RUNS\] → Demand Insights → P03
+
+❗ Problem Being Solved
+
+Businesses lack visibility into product performance, resulting in poor inventory planning and missed revenue opportunities. Staff rely on intuition rather than data, increasing the risk of overstocking or understocking.
+
+Pain points:
+
+- No clear demand visibility
+- Manual analysis effort (5 hrs/week)
+- Inconsistent decisions
+
+⚡ Automation Potential
+
+Level: High
+
+| **Dimension**     | **Assessment** |
+| ----------------- | -------------- |
+| Repetitiveness    | High           |
+| Data availability | High           |
+| Human judgment    | Medium         |
+| Integration       | POS/BI tools   |
+| Time saving       | ~60%           |
+
+Human role: Interpret insights
+
+⚠️ Risks and Limitations
+
+| **Risk**                 | **Level** | **Mitigation**      |
+| ------------------------ | --------- | ------------------- |
+| Misinterpreted trends    | Medium    | Cross-check data    |
+| Missing seasonal context | Medium    | Add historical data |
+
+Overall: MEDIUM
+
+**🔄** Version History
+
+- v1.0 - Initial draft
+
+Prompt: "Compare my POS sales and my stock count and tell me what is missing."
+
+Output: A list of items with numbers, but no explanation of why they might be missing.
+
+Observed effect: The manager still had to manually calculate the dollar value of the loss.
+
+Lesson learned: The prompt needs to include Financial Impact logic.
+
+- v1.2 - Logic Upgrade
+
+Change: Added a task to "Calculate the cost of variance based on unit price \[UNIT_PRICE\]."
+
+Output: A prioritized list showing which discrepancies are costing the cafe the most money.
+
+Observed effect: Focused the manager's attention on high-value items (like coffee beans) instead of low-value items (like sugar packets).
+
+Lesson learned: AI is most useful when it prioritizes tasks based on business value.
+
+📊 **A/B Test Results**
+
+| Criteria               | v1.0 score | v1.2 score |
+| ---------------------- | ---------- | ---------- |
+| Mathematical Precision | 4/5        | 5/5        |
+| Business Insight       | 2/5        | 5/5        |
+| Clarity of Action      | 3/5        | 4/5        |
+| Overall                | 3/5        | 4.7/5      |
+
+🔗 Related
+
+Prev: P01 | Next: P03
