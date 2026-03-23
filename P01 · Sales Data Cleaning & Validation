@@ -1,0 +1,51 @@
+P01 · Sales Data Cleaning & Validation
+Section: 01 — Data Operations | Workflow step: Step 1 of 10
+Current version: v1.2 | Status: ✅ Complete | Last updated: 20 March 2026
+📌 Prompt Text (v1.2)
+"You are a Senior Data Analyst for a retail café chain. Your task is to audit and clean the following POS dataset: [RAW_DATASET].
+Instructions: 
+1. Standardize all dates to DD-MM-YYYY format 
+2. Correct spelling variations in product names (e.g., 'Cappucino' to 'Cappuccino'). 
+3. Flag negative sales values as 'Anomalies'.
+Constraints: Do not delete data; only flag it. Maintain the original row count. Do NOT fabricate or assume missing values
+ Output: Provide a Markdown table of the cleaned data and a summary of issues found."
+👉 Placeholder
+Placeholder	Source	Example	Format
+[RAW_DATASET]	POS export	CSV file	Structured table
+[DATE_FORMAT]	Reporting standard	DD-MM-YYYY	Text
+
+🏢 Intended Workflow or Task
+•	Trigger: Weekly CSV export from the POS system.
+•	Actor: Operations Manager.
+•	Next step: The cleaned table is used as the input for P02 (Variance Analysis).
+❗ Problem Being Solved 
+Manual data cleaning currently takes 5 hours per week. Human error in Excel formulas often leads to incorrect stock orders, costing the business approximately $200 in monthly waste.
+⚡ Automation Potential High (90%) 
+The AI handles 100% of the formatting and flagging, leaving only the final confirmation to the manager.
+⚠️ Risks and Limitations
+•	Risk: AI may misinterpret a valid custom order as a spelling error. (Level: Low)
+•	Mitigation: Human-in-the-loop review to make sure they are correct before they are finished
+
+
+🔄 Version History
+•	v1.0 — Initial draft
+Prompt: "Clean this cafe sales data and fix the dates."
+Output: The AI fixed dates but deleted rows where the product name was misspelled or missing.
+Observed effect: Lost 5% of total sales records because the AI "cleaned" by deleting instead of correcting.
+Lesson learned: I must add a Negative Constraint to prevent data deletion.
+•	v1.2 — Constraint & Role Upgrade 
+Change: Assigned "Senior Data Analyst" role and added "Do NOT delete rows; only flag anomalies."
+Output: A complete table with corrections clearly labeled in a new column.
+Observed effect: 100% data retention. Time spent manually checking errors dropped from 40 mins to 2 mins.
+Lesson learned: Explicit instructions on "what not to do" are as important as "what to do."
+📊 A/B Test Results
+Criteria	v1.0 score	 v1.2 score
+Accuracy (Data Retention)	2/5	5/5
+Formatting (Table structure)	3/5	5/5
+Usability	3/5	4.5/5
+Overall	2.6/5	4.8/5
+
+🔗 Related
+Next: P02
+
+
