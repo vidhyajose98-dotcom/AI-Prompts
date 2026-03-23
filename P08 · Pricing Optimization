@@ -1,0 +1,73 @@
+**P08 · Pricing Optimization**
+
+**Section:** 02 - Operations | **Workflow step:** Step 8 of 10
+
+**Current version:** v1.2 | **Status:** Complete | **Last updated:** 24 March 2026
+
+**📌 Prompt Text (v1.2)**
+
+**"Role:** You are a Strategic Pricing Analyst with expertise in retail revenue management.
+
+**Task:** Recommend dynamic price adjustments for the slow-moving products identified in **\[PRODUCT_DATA\]** to maximize turnover while protecting margins.
+
+**Instructions:**
+
+- Analyze **\[SALES_PERFORMANCE\]** to identify price sensitivity.
+- Propose a 'New Price' that does not drop below the **\[MIN_MARGIN\]** threshold.
+- Estimate the 'Expected Sales Impact' (e.g., 'Predicted 20% increase in volume').
+- Identify a 'Perception Risk' (e.g., 'May devalue premium brand image').
+
+**Constraints:**
+
+- Prices must be rounded to the nearest \$0.10 for POS consistency.
+- Tone: Data-driven and commercially focused.
+
+**Output format:** Table with columns: Product | Current Price | Suggested Price | Expected Sales Impact | Risk Level."
+
+**Placeholders**
+
+| Placeholder           | Source        | Example               | Format     |
+| --------------------- | ------------- | --------------------- | ---------- |
+| \[PRODUCT_DATA\]      | POS system    | Product + price       | Table      |
+| \[SALES_PERFORMANCE\] | P02 output    | Low/medium/high sales | Table      |
+| \[MIN_MARGIN\]        | Business rule | 20%                   | Percentage |
+
+**🏢 Intended Workflow or Task**
+
+- **Trigger:** Monthly inventory review or seasonal menu updates.
+- **Actor:** Store Manager / Business Owner.
+- **Next step:** Approved price changes are updated in the POS and communicated to staff.
+
+**❗ Problem Being Solved** Static pricing on slow-moving items results in "dead stock" that occupies shelf space and loses value over time. Currently, the café lacks a data-driven way to adjust prices, leading to either missed revenue or excessive waste.
+
+**⚡ Automation Potential:** Medium (~60%) - AI provides the elasticities and suggestions, but the manager must approve based on brand positioning.
+
+**⚠️ Risks and Limitations**
+
+- **Risk:** Aggressive discounting could lead to a "Margin Crunch" if costs are not factored correctly. (Level: High)
+- **Mitigation:** Strict enforcement of the **\[MIN_MARGIN\]** constraint in the prompt instructions.
+
+**🔄 Version History**
+
+- **v1.0 - Initial draft**
+  - **Prompt:** "Suggest lower prices for things that aren't selling."
+  - **Output:** Random discounts (e.g., "Make it \$1 cheaper") without checking profit margins.
+  - **Observed effect:** Suggested prices that would have actually lost the business money per sale.
+  - **Lesson learned:** I must include a **Minimum Margin** constraint and **Impact Analysis**.
+- **v1.2 - Analytical Upgrade** ✅ **Current**
+  - **Change:** Added the "Pricing Analyst" role and specific financial safety boundaries.
+  - **Output:** Balanced recommendations that prioritize volume without sacrificing total profit.
+  - **Observed effect:** Provided a clear business case for each price change.
+  - **Lesson learned:** AI excels at finding the "sweet spot" in pricing when given clear financial guardrails.
+
+**📊 A/B Test Results**
+
+| Criteria             | v1.0 score | v1.2 score |
+| -------------------- | ---------- | ---------- |
+| **Financial Safety** | 1/5        | 5/5        |
+| **Market Logic**     | 2/5        | 4.5/5      |
+| **Overall**          | 1.5/5      | 4.8/5      |
+
+**🔗 Related**
+
+Prev: P07 | Next: P09
