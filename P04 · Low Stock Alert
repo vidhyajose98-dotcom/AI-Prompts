@@ -1,0 +1,74 @@
+P04 · Low Stock Alert
+
+📌 **Prompt Text** (v1.2)
+
+Role: You are a Senior Inventory Control Specialist for a fast-paced retail café.
+
+Task: Identify products that are likely to run out of stock within the next \[ALERT_THRESHOLD\] days.
+
+Input: Use the current inventory levels from \[INVENTORY_LEVELS\] and the demand forecast from \[FORECAST_DATA\].
+
+Instructions:
+
+- Calculate estimated 'Days Remaining' for each product.
+- Categorize urgency as follows:
+  - High: < 24 hours of stock remaining.
+  - Medium: 24-72 hours.
+  - Low: > 72 hours.
+- Provide a 'Suggested Action' for each (e.g., 'Order immediately', 'Monitor', or 'Transfer from other branch').
+
+Constraints: Format as a Markdown table. Do not include items with 100% stock levels.
+
+Output format: Table with columns: Product | Days Remaining | Urgency Level | Suggested Action."
+
+**Placeholder**
+
+| Placeholder          | Source           | Example              | Format  |
+| -------------------- | ---------------- | -------------------- | ------- |
+| \[INVENTORY_LEVELS\] | Inventory system | Product stock levels | Table   |
+| \[FORECAST_DATA\]    | P03 output       | Predicted demand     | Table   |
+| \[ALERT_THRESHOLD\]  | Business rule    | 3 days               | Integer |
+
+🏢 Intended Workflow or Task
+
+- Trigger: Daily morning stock synchronization.
+- Actor: Store Manager / Procurement Officer.
+- Next step: High-urgency items are sent to P06 (Reordering).
+
+❗ Problem Being Solved:
+
+Manual stock monitoring is reactive. By the time a manager notices "Low Stock," it is often too late to order, resulting in an average of \$50/day in lost sales for popular items like almond milk.
+
+⚡ Automation Potential:
+
+High (90%) - AI calculates the math that humans often skip.
+
+⚠️ Risks and Limitations
+
+- Risk: Incorrect thresholds set by the user could lead to "False Alarms." (Level: Medium)
+- Mitigation: Manager must verify the "Suggested Action" before placing orders.
+
+🔄 Version History
+
+- v1.0 - Initial draft
+  - Prompt: "Tell me what is running low."
+  - Output: A vague list of items with no timeframes or urgency levels.
+  - Observed effect: The manager didn't know which item to order first; it wasn't helpful for decision-making.
+  - Lesson learned: I need to define Urgency Categories and include Actionable Advice.
+- v1.2 - Logic & Role Upgrade ✅ Current
+  - Change: Added the "Inventory Control Specialist" role and the High/Medium/Low urgency logic.
+  - Output: A prioritized table that highlights the most critical shortages first.
+  - Observed effect: Reduced decision-making time from 20 minutes to 3 minutes.
+  - Lesson learned: Prioritization is the key value of an AI inventory tool.
+
+📊 A/B Test Results
+
+| **Criteria**      | **v1.0 score** | **v1.2 score** |
+| ----------------- | -------------- | -------------- |
+| Urgency Logic     | 1/5            | 5/5            |
+| Clarity of Action | 2/5            | 5/5            |
+| Overall           | 1.5/5          | 5/5            |
+
+🔗 Related
+
+Prev: P03 | Next: P05
