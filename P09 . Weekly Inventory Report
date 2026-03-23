@@ -1,0 +1,78 @@
+**P09 · Weekly Inventory Report**
+
+**Section:** 03 - Strategy & Reporting | **Workflow step:** Step 9 of 10
+
+**Current version:** v1.2 | **Status:** Complete | **Last updated:** 25 March 2026
+
+**📌 Prompt Text (v1.2)**
+
+**"Role:** You are a Senior Business Intelligence Analyst for a retail café chain.
+
+**Task:** Generate a comprehensive Weekly Inventory Performance Report for the store owner.
+
+**Input:** Synthesize the following data points:
+
+- Raw sales trends and volume from **\[WEEKLY_DATA\]**.
+- Future demand projections from **\[FORECAST_SUMMARY\]**.
+- Critical inventory threats from **\[RISK_ALERTS\]**.
+
+**Instructions:**
+
+- Summarize 'Top 3 Successes' (e.g., high-margin items with low waste).
+- Highlight 'Top 3 Risks' (e.g., imminent stock-outs or overstock capital lock-up).
+- Provide a 'Waste Leakage' estimate in dollar value.
+
+**Constraints:** > - Use professional, executive-level language.
+
+- Limit the summary to 300 words.
+- Use clear headings and bullet points.
+
+**Output format:** Structured Executive Briefing (Overview | Performance Metrics | Risk Analysis | Recommendations)."
+
+**Placeholders**
+
+| **Placeholder**      | **Source**             | **Example**          | **Format** |
+| -------------------- | ---------------------- | -------------------- | ---------- |
+| \[WEEKLY_DATA\]      | Aggregated system data | Weekly sales + stock | Table      |
+| \[FORECAST_SUMMARY\] | P03 output             | Demand trends        | Text       |
+| \[RISK_ALERTS\]      | P04/P05 output         | Stock risks          | List       |
+
+**🏢 Intended Workflow or Task**
+
+- **Trigger:** End-of-week data consolidation (Sunday evening).
+- **Actor:** Store Owner / General Manager.
+- **Next step:** Insights are used in **P10 (Executive Decision Summary)** to set the strategy for the following week.
+
+**❗ Problem Being Solved** Café managers are overwhelmed by raw data. Currently, it takes **3 hours** to manually compile reports from different sheets. Important trends (like a slow rise in waste) are often missed until they affect the monthly profit-and-loss statement.
+
+**⚡ Automation Potential:** High (~85%) - The AI handles the synthesis; the manager only checks for data outliers.
+
+**⚠️ Risks and Limitations**
+
+- **Risk:** The AI might "over-summarize" and miss a small but critical data point (e.g., a specific high-value item missing). (Level: Medium)
+- **Mitigation:** Ensure the input **\[WEEKLY_DATA\]** is formatted clearly as a table to guide the AI's attention.
+
+**🔄 Version History**
+
+- **v1.0 - Initial draft**
+  - **Prompt:** "Summarize my weekly sales and stock."
+  - **Output:** A basic list of numbers that didn't provide any "insight" or "advice."
+  - **Observed effect:** The manager still had to figure out what the numbers meant for the business.
+  - **Lesson learned:** I need to ask the AI for **Key Insights** and **Successes/Risks**, not just a summary.
+- **v1.2 - Analytical Upgrade**
+  - **Change:** Added the "Senior BI Analyst" role and the requirement for "Top 3 Successes/Risks."
+  - **Output:** A professional briefing that identifies exactly where the business is losing or making money.
+  - **Observed effect:** Reduced the time spent on weekly reviews from 60 minutes to 10 minutes.
+  - **Lesson learned:** Executive formatting (Headings/Bullets) significantly improves the utility of the report.
+
+**📊 A/B Test Results**
+
+| **Criteria**  | **v1.0 score** | **v1.2 score** |
+| ------------- | -------------- | -------------- |
+| Insight Depth | 2/5            | 5/5            |
+| Readability   | 3/5            | 5/5            |
+| Overall       | 2.5/5          | 5/5            |
+
+**🔗 Related**
+
+Prev: P08 | Next: P010
