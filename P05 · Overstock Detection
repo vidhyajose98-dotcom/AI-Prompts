@@ -1,0 +1,76 @@
+**P05 · Overstock Detection**
+
+Section: 02 - Operations | Workflow step: Step 5 of 10
+
+Current version: v1.2 | Status: Complete | Last updated: 24 March 2026
+
+📌 **Prompt Text** (v1.2)
+
+"Role: You are a Financial Operations Consultant for a retail café business.
+
+Task: Identify products with excess stock levels that are locking up working capital or increasing waste risk.
+
+Input: Compare the current inventory levels in \[INVENTORY_DATA\] against the historical sales frequency in \[SALES_DATA\].
+
+Criteria for Overstock:
+
+- Stock levels exceed 150% of the 14-day predicted demand.
+- Low sales frequency (items not sold in the last 48 hours).
+
+Instructions:
+
+- Calculate the 'Estimated Waste Value' for perishable items.
+- Assign a 'Risk Type' (e.g., Financial Risk, Expiring Soon, or Storage Constraint).
+- Recommend a 'Clearance Action' (e.g., Flash sale, Menu bundle, or Return to vendor).
+
+Constraints: Format as a Markdown table. Tone: Professional and data-driven.
+
+Output format: Table with columns: Product | Overstock Level | Risk Type | Recommended Action."
+
+**Placeholders**:
+
+| **Placeholder**    | **Source**                  | **Example**             |
+| ------------------ | --------------------------- | ----------------------- |
+| INVENTORY_DATA     | Inventory Management System | Current_Stock_24Mar.csv |
+| SALES_DATA         | Output from P01/P02         | Cleaned_Sales_Insights  |
+| OVERSTOCK_CRITERIA | Business Policy             | 150% of 14-day demand   |
+
+🏢 Intended Workflow or Task
+
+- Trigger: Weekly financial review or after a large shipment arrival.
+- Actor: Store Owner / Financial Controller.
+- Next step: Recommended actions (like flash sales) are sent to the Marketing team or POS for price adjustments.
+
+❗ Problem Being Solved Overstocking currently locks up an estimated \$1,200 in working capital monthly. For perishable items (pastries/milk), this leads to direct "dumpage" costs that hurt the café's net profit margins.
+
+⚡ Automation Potential: High (75%) - AI identifies the items, but the Manager must confirm if a "Flash Sale" aligns with the brand.
+
+**⚠️** Risks and Limitations
+
+- Risk: AI might flag "Safety Stock" (bulk buys) as overstock. (Level: Medium)
+- Mitigation: Include a constraint to ignore "Non-perishable bulk dry goods" unless specified.
+
+**🔄** Version History
+
+- v1.0 - Initial draft
+  - Prompt: "What do I have too much of?"
+  - Output: A list of items with high quantities, but no business context.
+  - Observed effect: It flagged napkins and straws as overstock, which isn't a high-priority financial risk.
+  - Lesson learned: I need to define Risk Types and separate perishables from non-perishables.
+- v1.2 - Financial Logic Upgrade ✅ Current
+  - Change: Added the "Financial Consultant" role and the "Waste Value" calculation task.
+  - Output: A prioritized list focusing on items that cost the business the most money if they expire.
+  - Observed effect: Shifted management focus from "organizing shelves" to "saving capital."
+  - Lesson learned: Adding financial metrics makes the AI output much more valuable to a business owner.
+
+📊 **A/B Test Results**
+
+| Criteria                   | v1.0 score | v1.2 score |
+| -------------------------- | ---------- | ---------- |
+| Financial Insight          | 1/5        | 5/5        |
+| Actionable Recommendations | 2/5        | 4.5/5      |
+| Overall                    | 1.5/5      | 4.8/5      |
+
+🔗 Related
+
+Prev: P04 | Next: P06
