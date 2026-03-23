@@ -1,0 +1,107 @@
+**P03 · Demand Forecasting**
+
+**Section:** 01 - Data Operations | **Workflow step:** Step 3 of 10
+
+**Current version:** v1.2 | **Status:** ✅ Complete | **Last updated:** 20 March 2026
+
+🧠 Prompt Text
+
+I'm a Supply Chain Manager at a cafe.
+
+Task:  
+Predict product demand for the next 14 days using historical sales data.
+
+Input:  
+\[Cleaned dataset from P01 + insights from P02\]
+
+Instructions:
+
+- Use recent sales trends (daily + weekly patterns)
+- Forecast demand per product
+- Include confidence level (High/Medium/Low)
+- Clearly state assumptions
+
+Constraints:
+
+- Do not assume external factors not provided
+- Focus on short-term forecasting accuracy
+- Do not fabricate missing data
+
+Output:  
+Product | Forecast Demand | Confidence Level | Key Assumptions
+
+**Placeholders**
+
+| Placeholder         | Source               | Example             | Format           |
+| ------------------- | -------------------- | ------------------- | ---------------- |
+| \[HISTORICAL_DATA\] | P01 output           | 3 months sales data | Structured table |
+| \[DEMAND_INSIGHTS\] | P02 output           | Fast/slow products  | Text summary     |
+| \[FORECAST_PERIOD\] | Business requirement | Next 14 days        | Integer/Text     |
+
+⚙️ **Intended Workflow or Task**
+
+- Trigger: Completion of P01 and P02.
+- Actor: Store Owner.
+- Next step**:** Output used to generate the supplier email in P04.  
+   P02 → \[P03 RUNS\] → Forecast Data → P04 (Stock Monitoring)
+
+Used by operations manager for planning inventory orders.
+
+❗ Problem Being Solved
+
+Manual forecasting is inconsistent and time-consuming  
+Inaccurate predictions lead to:
+
+- Stockouts → lost revenue
+- Overstocking → waste and storage cost
+
+⚡ Automation Potential
+
+| Dimension         | Assessment         |
+| ----------------- | ------------------ |
+| Repetitiveness    | High (weekly task) |
+| Data availability | High               |
+| Human judgment    | Medium             |
+| Time saving       | ~60-70%            |
+
+Human-in-the-loop: Validate forecasts for high-risk products.
+
+⚠️ Risks and Limitations
+
+| Risk                     | Level  | Mitigation                                  |
+| ------------------------ | ------ | ------------------------------------------- |
+| Forecast inaccuracy      | High   | Use short-term forecasts + frequent updates |
+| Missing seasonal factors | Medium | Add historical data over time               |
+| Over-reliance on AI      | Medium | Human validation required                   |
+
+Overall Risk: MEDIUM-HIGH
+
+🔄 Version History
+
+v1.0 - Initial draft
+
+- Prompt: "Predict my milk and bean orders for next week."
+- Output: A list of numbers with no reasoning.
+- Observed effect: The AI didn't account for the weekend rush, so the prediction was 15% too low.
+- Lesson learned: I need to provide a Context placeholder for events and a Role that understands retail cycles.
+
+v1.2 - Analytical Upgrade ✅
+
+- Change: Added the supply chain the \[LOCAL_CONTEXT\] placeholder.
+- Output: Much more accurate predictions that included a 10% safety buffer for the weekend.
+- Observed effect: Forecast error rate dropped significantly during testing.
+
+Lesson: Structured constraints improve forecasting quality
+
+📊 **A/B Test Results**
+
+| **Criteria**          | **v1.0 score** | **v1.2 score** |
+| --------------------- | -------------- | -------------- |
+| Mathematical Accuracy | 3/5            | 5/5            |
+| Business Context      | 2/5            | 4.5/5          |
+| Actionable Output     | 3/5            | 45/5           |
+| Overall               | 2.7/5          | 4.8/5          |
+
+🔗 Related
+
+Prev: P02 | Next: P04
